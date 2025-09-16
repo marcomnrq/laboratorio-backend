@@ -3,6 +3,7 @@ from scoring import evaluar_cliente
 
 app = FastAPI()
 
+# Endpoint para evaluar tarjetas de crédito
 @app.get("/evaluar")
 def evaluar(edad: int, ingresos: float):
     if edad < 0 or ingresos < 0:
