@@ -1,0 +1,170 @@
+{
+	"info": {
+		"_postman_id": "8d063c5f-c503-456e-b419-99a896e62223",
+		"name": "TarjetaOH",
+		"description": "Proyecto backend para la Financiera OH sobre calificación de tarjetas de crédito.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11554414"
+	},
+	"item": [
+		{
+			"name": "Rechazado",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El status de la request debe ser 200\", () => {",
+							"    pm.response.to.have.status(200)",
+							"})",
+							"",
+							"pm.test(\"Debe ser RECHAZADO\", () => {",
+							"    const json = pm.response.json();",
+							"    pm.expect(json.status).to.eql(\"RECHAZADO\")",
+							"    pm.expect(json.data.categoria).to.eql(null)",
+							"    pm.expect(json.data.linea).to.eql(0)",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/evaluar?edad=17&ingresos=500",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"evaluar"
+					],
+					"query": [
+						{
+							"key": "edad",
+							"value": "17"
+						},
+						{
+							"key": "ingresos",
+							"value": "500"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TarjetaOh",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El status de la request debe ser 200\", () => {",
+							"    pm.response.to.have.status(200)",
+							"})",
+							"",
+							"pm.test(\"Debe ser aprobado con Tarjeta OH\", () => {",
+							"    const json = pm.response.json();",
+							"    pm.expect(json.status).to.eql(\"OK\")",
+							"    pm.expect(json.data.categoria).to.eql(\"Tarjeta OH\")",
+							"    pm.expect(json.data.linea).to.eql(2000)",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/evaluar?edad=21&ingresos=1500",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"evaluar"
+					],
+					"query": [
+						{
+							"key": "edad",
+							"value": "21"
+						},
+						{
+							"key": "ingresos",
+							"value": "1500"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TarjetaOh Premium",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El status de la request debe ser 200\", () => {",
+							"    pm.response.to.have.status(200)",
+							"})",
+							"",
+							"pm.test(\"Debe ser aprobado con Tarjeta OH Premium\", () => {",
+							"    const json = pm.response.json();",
+							"    pm.expect(json.status).to.eql(\"OK\")",
+							"    pm.expect(json.data.categoria).to.eql(\"Tarjeta OH Premium\")",
+							"    pm.expect(json.data.linea).to.eql(10000)",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/evaluar?edad=35&ingresos=6700",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"evaluar"
+					],
+					"query": [
+						{
+							"key": "edad",
+							"value": "35"
+						},
+						{
+							"key": "ingresos",
+							"value": "6700"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
