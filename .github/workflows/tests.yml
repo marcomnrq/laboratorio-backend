@@ -39,12 +39,12 @@ jobs:
           node-version: '20'
 
       - name: Install Newman
-        run: npm install -g newman newman newman-reporter-htmlextra
+        run: npm install -g newman newman-reporter-htmlextra
 
 
       - name: Run Newman collection
         run: |
-          newman run epostman_collection.json \
+          newman run postman_collection.json \
             --reporters cli,htmlextra \
             --reporter-htmlextra-export newman-report.html
       - name: Upload Newman Report
