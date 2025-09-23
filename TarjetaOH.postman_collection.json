@@ -61,6 +61,52 @@
 			"response": []
 		},
 		{
+			"name": "Datos Invalidos",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"El status de la request debe ser 400 Bad Request\", () => {",
+							"    pm.response.to.have.status(400)",
+							"})"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/evaluar?edad=-6&ingresos=-10",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"evaluar"
+					],
+					"query": [
+						{
+							"key": "edad",
+							"value": "-6"
+						},
+						{
+							"key": "ingresos",
+							"value": "-10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "TarjetaOh",
 			"event": [
 				{
